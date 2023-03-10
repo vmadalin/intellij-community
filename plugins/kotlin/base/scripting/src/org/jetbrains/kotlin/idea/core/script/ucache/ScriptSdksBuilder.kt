@@ -62,7 +62,7 @@ class ScriptSdksBuilder(
     }
 
     fun addSdk(javaHome: Path?): Sdk? {
-        if (javaHome == null) return addDefaultSdk()
+        if (javaHome == null || defaultSdk?.homePath == javaHome.toString()) return addDefaultSdk()
 
         return sdks.getOrPut(SdkId(javaHome)) {
             getScriptSdkByJavaHome(javaHome) ?: defaultSdk
