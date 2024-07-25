@@ -377,6 +377,7 @@ public class GradleProjectResolver implements ExternalSystemProjectResolver<Grad
       .startSpan();
     try (Scope ignore = projectResolversSpan.makeCurrent()) {
       extractExternalProjectModels(models);
+      // TODO pass here the buildenvironment javaHome so this can be used to configure the projectSDK instead of taking it from the project
       return convertData(executionSettings, resolverContext, projectResolverChain);
     }
     catch (Throwable t) {

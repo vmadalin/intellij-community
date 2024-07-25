@@ -321,6 +321,8 @@
     <action internal="true" id="Gradle.SyncWithDaemonTelemetry"
             class="org.jetbrains.plugins.gradle.internal.daemon.GradleSyncWithDaemonTelemetry"/>
 
+    <action id="Gradle.MigrateGradleJdkConfigToDaemonToolchain" class="org.jetbrains.plugins.gradle.internal.daemon.MigrateGradleJdkConfigToDaemonToolchainAction"/>
+
     <action id="Gradle.ImportExternalProject" class="org.jetbrains.plugins.gradle.action.ImportProjectFromScriptAction" icon="GradleIcons.Gradle">
       <add-to-group group-id="ProjectViewPopupMenuSettingsGroup" anchor="last"/>
       <add-to-group group-id="EditorPopupMenu" anchor="last"/>

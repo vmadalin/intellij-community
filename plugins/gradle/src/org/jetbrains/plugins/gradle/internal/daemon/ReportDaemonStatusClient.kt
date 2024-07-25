@@ -1,8 +1,8 @@
 // Copyright 2000-2024 JetBrains s.r.o. and contributors. Use of this source code is governed by the Apache 2.0 license.
 package org.jetbrains.plugins.gradle.internal.daemon
 
-import com.intellij.DynamicBundle
 import com.intellij.gradle.toolingExtension.util.GradleReflectionUtil
+import org.gradle.internal.extensions.stdlib.toDefaultLowerCase
 import org.gradle.internal.id.IdGenerator
 import org.gradle.launcher.daemon.client.DaemonClientConnection
 import org.gradle.launcher.daemon.client.DaemonConnector
@@ -115,7 +115,7 @@ class ReportDaemonStatusClient(private val daemonRegistry: DaemonRegistry,
 
   private fun DaemonStopEvent.getTimestampTime() = timestamp.time
 
-  private fun DaemonStopEvent.getExpirationStatus(): String = status?.name?.replace("_", " ")?.lowercase(DynamicBundle.getLocale()) ?: ""
+  private fun DaemonStopEvent.getExpirationStatus(): String = status?.name?.replace("_", " ")?.toDefaultLowerCase() ?: ""
 
   private fun DaemonInfo.getRegistryDir() = context.daemonRegistryDir
 
