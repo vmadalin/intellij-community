@@ -31,6 +31,7 @@ import org.jetbrains.annotations.ApiStatus
 import org.jetbrains.annotations.PropertyKey
 import org.jetbrains.plugins.gradle.issue.IncorrectGradleJdkIssue
 import org.jetbrains.plugins.gradle.service.GradleInstallationManager
+import org.jetbrains.plugins.gradle.settings.GradleProjectSettings
 import org.jetbrains.plugins.gradle.settings.GradleSettings
 import org.jetbrains.plugins.gradle.util.GradleBundle
 import org.jetbrains.plugins.gradle.util.GradleBundle.PATH_TO_BUNDLE
@@ -93,6 +94,9 @@ class LocalGradleExecutionAware : GradleExecutionAware {
   ): SdkInfo? {
     val settings = project.lock { GradleSettings.getInstance(it) }
     val projectSettings = settings.getLinkedProjectSettings(externalProjectPath) ?: return null
+    // Projects using Daemon JVM criteria with a compatible Gradle version will skip any
+    // Gradle JDK configuration validation since this will be delegated to Gradle
+    if (GradleDaemonJvmHelper.isProjectUsingDaemonJvmCriteria(projectSettings)) return null
 
     val originalGradleJvm = projectSettings.gradleJvm
     val provider = project.lock { getGradleJvmLookupProvider(it, projectSettings) }
