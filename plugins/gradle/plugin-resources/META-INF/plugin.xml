@@ -72,6 +72,7 @@
     <issueChecker implementation="org.jetbrains.plugins.gradle.issue.GradleDaemonStartupIssueChecker"/>
     <issueChecker implementation="org.jetbrains.plugins.gradle.issue.GradleBuildCancelledIssueChecker"/>
     <issueChecker implementation="org.jetbrains.plugins.gradle.issue.GradleOutOfMemoryIssueChecker"/>
+    <issueChecker implementation="org.jetbrains.kotlin.idea.gradleJava.issues.GradleDaemonToolchainIssueChecker"/>
     <executionHelperExtension implementation="org.jetbrains.plugins.gradle.service.execution.GradleTaskExecutionMeasuringExtension"/>
     <executionHelperExtension
       implementation="org.jetbrains.plugins.gradle.service.execution.telemetry.GradleTelemetryAgentProvidingExecutionHelperExtension"/>
